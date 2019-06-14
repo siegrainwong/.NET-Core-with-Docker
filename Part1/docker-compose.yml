@@ -10,7 +10,7 @@ services:
     links:
       - sqlserver
     volumes:
-      - ../Core.API/appsettings.docker.json:/app/appsettings.json
+      - ./Core.API/appsettings.docker.json:/app/appsettings.json:ro
     restart: always
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2017-latest
