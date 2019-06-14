@@ -20,5 +20,9 @@ services:
       ACCEPT_EULA: Y
       MSSQL_PID: Developer
       SA_PASSWORD: 'NetCore123!@#'
+    volumes:
+      - coredata:/var/opt/mssql # <--
     ports:
       - 1433
+volumes:
+  coredata: # <--

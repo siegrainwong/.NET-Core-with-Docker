@@ -26,7 +26,7 @@ namespace Core.Entity.Migrations
                 columns: new[] { "Id", "Content", "Title" },
                 values: new object[,]
                 {
-                    { 1, "a2bf1adc-3dfc-4939-aa9a-3320e4fb9600", "本教程由Siegrain倾情奉献 :)" },
+                    { 1, "a2bf1adc-3dfc-4939-aa9a-3320e4fb9600", "本教程由Siegrain倾情奉献😂️" },
                     { 2, "6c6286bf-626f-4de9-8300-7caca71851a1", "感谢大家关注~" },
                     { 3, "13da4743-0b63-413a-8a16-d5bda43cafca", "博客地址为 http://siegrain.wang" },
                     { 4, "9b439e03-47b0-40ea-a988-aa26e6d75916", "本教程Github地址为 https://github.com/Seanwong933/.NET-Core-with-Docker" }

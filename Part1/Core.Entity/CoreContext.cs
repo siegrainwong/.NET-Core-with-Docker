@@ -35,7 +35,7 @@ namespace Core.Entity
             #region Seeds
 
             string[] titles = new string[] {
-                "本教程由Siegrain倾情奉献 :)",
+                "本教程由Siegrain倾情奉献😂️",
                 "感谢大家关注~",
                 "博客地址为 http://siegrain.wang",
                 "本教程Github地址为 https://github.com/Seanwong933/.NET-Core-with-Docker"
