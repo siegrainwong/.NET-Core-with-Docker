@@ -19,9 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="skyapm.Development.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="skyapm.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
