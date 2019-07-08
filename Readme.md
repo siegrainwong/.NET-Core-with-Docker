@@ -11,6 +11,10 @@
 点击即可查看文章
 
 1. [用 `docker-compose` 启动`WebApi`和`SQL Server`](https://siegrain.wang/article/2019/06/24/launch-netcore-webapi-and-sqlserver-by-docker-compose)
-2. 在容器中集成`Skywalking` APM
+2. [在容器中集成`Skywalking` APM](https://siegrain.wang/article/2019/07/08/deploy-skywalking-in-docker-with-netcore)
 3. 通过`nginx-proxy`对 `ES`、`Skywalking`、`WebApi`实现自动反向代理和`HTTPS`
 4. 通过`Azure DevOps`进行`CI/CD`和蓝绿发布
+
+## 案例
+
+[Ancorazor](https://github.com/siegrainwong/ancorazor)：这是我正在开发的一个开源博客系统，该系列文章的这套架构就出自这个项目，觉得不错的话希望可以帮我点颗星鼓励一下。
