@@ -1,0 +1,81 @@
+version: '3.3'
+services:
+  coreapi:
+    container_name: coreapi
+    image: siegrainwong/coreapi:latest
+    ports:
+      - 5000:5000
+    depends_on:
+      - sqlserver
+    links:
+      - sqlserver
+    volumes:
+      - ./Core.API/appsettings.docker.json:/app/appsettings.json:ro
+    environment:
+      ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: SkyAPM.Agent.AspNetCore
+      SKYWALKING__SERVICENAME: coreapi
+    restart: always
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: sqlserver
+    restart: always
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_PID: Developer
+      SA_PASSWORD: 'NetCore123!@#'
+    volumes:
+      - coredata:/var/opt/mssql
+    ports:
+      - 1433
+  elasticsearch:
+    image: wutang/elasticsearch-shanghai-zone:6.3.2
+    container_name: elasticsearch
+    restart: always
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      discovery.type: single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+  sw-oap:
+    image: siegrainwong/skywalking-oap:6.1.0
+    container_name: sw-oap
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    restart: always
+    ports:
+      - 11800:11800
+      - 12800:12800
+    environment:
+      SW_STORAGE: elasticsearch
+      SW_STORAGE_ES_CLUSTER_NODES: elasticsearch:9200
+  sw-ui:
+    image: apache/skywalking-ui:6.1.0
+    container_name: sw-ui
+    depends_on:
+      - sw-oap
+    links:
+      - sw-oap
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      SW_OAP_ADDRESS: sw-oap:12800
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    ports:
+      - 9000:9000
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+volumes:
+  coredata:
+  portainer_data:
