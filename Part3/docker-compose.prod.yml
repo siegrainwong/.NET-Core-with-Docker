@@ -1,0 +1,50 @@
+version: '3.3'
+services:
+  coreapi:
+    environment:
+      VIRTUAL_HOST: coreapi.com
+      VIRTUAL_PORT: 5000
+      LETSENCRYPT_HOST: yourdomain.com # <- your domain here
+  sw-ui:
+    environment:
+      VIRTUAL_HOST: s.coreapi.com
+      VIRTUAL_PORT: 8080
+      LETSENCRYPT_HOST: s.yourdomain.com # <- your domain here
+  portainer:
+    environment:
+      VIRTUAL_HOST: d.coreapi.com
+      VIRTUAL_PORT: 9000
+      LETSENCRYPT_HOST: d.yourdomain.com # <- your domain here
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: jwilder/nginx-proxy:alpine
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - conf:/etc/nginx/conf.d
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - dhparam:/etc/nginx/dhparam
+      - certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock
+  letsencrypt:  # <- add letsencrypt service
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: letsencrypt
+    environment:
+      DEFAULT_EMAIL: youremail@gmail.com # <- using your email address
+      NGINX_PROXY_CONTAINER: nginx-proxy
+    volumes:
+      - conf:/etc/nginx/conf.d
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - dhparam:/etc/nginx/dhparam
+      - certs:/etc/nginx/certs:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    network_mode: bridge
+volumes:
+  conf:
+  vhost:
+  html:
+  dhparam:
+  certs:

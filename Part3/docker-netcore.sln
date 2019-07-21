@@ -9,8 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Entity", "Core.Entity\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{ADCC056A-ECB5-4B9D-8388-C02D6B614DA1}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose.dev.yml = docker-compose.dev.yml
+		docker-compose.prod.yml = docker-compose.prod.yml
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
+		launch.prod.ps1 = launch.prod.ps1
 		launch.ps1 = launch.ps1
 	EndProjectSection
 EndProject

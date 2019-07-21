@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  coreapi:
+    ports:
+      - 5000:5000
+  sw-ui:
+    ports:
+      - 8080:8080
+  portainer:
+    ports:
+      - 9000:9000

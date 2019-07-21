@@ -1,4 +1,4 @@
-docker-compose up -d
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 
 docker run --rm -it `
 	-v F:\Projects\docker-netcore\Part3:/app/ `

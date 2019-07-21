@@ -3,8 +3,6 @@ services:
   coreapi:
     container_name: coreapi
     image: siegrainwong/coreapi:latest
-    ports:
-      - 5000:5000
     depends_on:
       - sqlserver
     links:
@@ -32,10 +30,11 @@ services:
     container_name: elasticsearch
     restart: always
     ports:
-      - 9200:9200
-      - 9300:9300
+      - 9200
+      - 9300
     environment:
       discovery.type: single-node
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     ulimits:
       memlock:
         soft: -1
@@ -49,8 +48,8 @@ services:
       - elasticsearch
     restart: always
     ports:
-      - 11800:11800
-      - 12800:12800
+      - 11800
+      - 12800
     environment:
       SW_STORAGE: elasticsearch
       SW_STORAGE_ES_CLUSTER_NODES: elasticsearch:9200
@@ -62,8 +61,6 @@ services:
     links:
       - sw-oap
     restart: always
-    ports:
-      - 8080:8080
     environment:
       SW_OAP_ADDRESS: sw-oap:12800
   portainer:
@@ -71,8 +68,6 @@ services:
     container_name: portainer
     command: -H unix:///var/run/docker.sock
     restart: always
-    ports:
-      - 9000:9000
     volumes:
       - //var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
