@@ -12,7 +12,7 @@
 
 1. [用 `docker-compose` 启动`WebApi`和`SQL Server`](https://siegrain.wang/article/2019/06/24/launch-netcore-webapi-and-sqlserver-by-docker-compose)
 2. [在容器中集成`Skywalking` APM](https://siegrain.wang/article/2019/07/08/deploy-skywalking-in-docker-with-netcore)
-3. 通过`nginx-proxy`对 `ES`、`Skywalking`、`WebApi`实现自动反向代理和`HTTPS`
+3. [通过`nginx-proxy`对 `Portainer`、`Skywalking`、`WebApi`实现自动反向代理和`HTTPS`](https://siegrain.wang/article/2019/07/21/using-nginx-proxy-with-docker-compose)
 4. 通过`Azure DevOps`进行`CI/CD`和蓝绿发布
 
 ## 案例
